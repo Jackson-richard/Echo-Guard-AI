@@ -1,0 +1,82 @@
+# Standard Gitignore for Enterprise Architecture
+
+# Environments
+.env
+.env.production
+.env.development
+.env.local
+
+# Node / Frontend
+node_modules/
+dist/
+dist-ssr/
+build/
+out/
+.vite/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python / Backend / AI
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+.venv/
+
+# Deep Learning / ML Models (Do not push 500MB weights to git)
+ai_engine/models/**/*.pt
+ai_engine/models/**/*.pth
+ai_engine/models/**/*.onnx
+ai_engine/models/**/*.bin
+*.h5
+*.pickle
+*.pkl
+
+# Database & Cache
+redis_data/
+mongodb_data/
+*.sqlite3
+
+# Logs
+*.log
+logs/
+backend/logs/
+ai_engine/logs/
+
+# Secrets
+secrets/
+*.pem
+*.key
+*.cert
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Generated Reports & Local Test Artifacts
+dump*.txt
+audit*.txt
+audit*.json
+test_logs.txt
+verification_report.txt
+test_audio/

@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - echoguard_dmz
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - ENV=production
+      - MONGO_URI=mongodb://mongodb:27017/echoguard
+      - REDIS_URI=redis://redis:6379/0
+      - AI_ENGINE_URL=http://ai_engine:8000
+    networks:
+      - echoguard_dmz
+      - echoguard_internal
+    depends_on:
+      - mongodb
+      - redis
+      - ai_engine
+
+  ai_engine:
+    build: ./ai_engine
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=production
+    networks:
+      - echoguard_internal
+    volumes:
+      - ai_model_weights:/app/models
+
+  mongodb:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    networks:
+      - echoguard_internal
+    volumes:
+      - mongodb_data:/data/db
+
+  redis:
+    image: redis:7-alpine
+    networks:
+      - echoguard_internal
+    volumes:
+      - redis_data:/data
+
+networks:
+  echoguard_dmz:
+    driver: bridge
+  echoguard_internal:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+  redis_data:
+  ai_model_weights:

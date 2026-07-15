@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #1F2937 transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #1F2937;
+    border-radius: 3px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: #374151;
+  }
+
+  body {
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-cyber-card/70 backdrop-blur-xl border border-white/[0.06] rounded-xl;
+  }
+
+  .glass-card-glow {
+    @apply glass-card shadow-[0_0_15px_#00e5ff0f];
+  }
+
+  .accent-glow {
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.15), 0 0 60px rgba(0, 229, 255, 0.05);
+  }
+
+  .danger-glow {
+    box-shadow: 0 0 20px rgba(255, 77, 79, 0.15);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent to-cyan-300 bg-clip-text text-transparent;
+  }
+
+  .stat-card {
+    @apply glass-card p-5 transition-all duration-300 hover:border-accent/20 hover:shadow-[0_0_20px_#00e5ff14] cursor-default;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-400 transition-all duration-200 hover:text-white hover:bg-white/5;
+  }
+
+  .nav-link-active {
+    @apply text-accent bg-accent/10 border-l-2 border-accent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-accent text-cyber-bg font-semibold rounded-lg transition-all duration-200 hover:bg-accent-dark hover:shadow-[0_0_20px_#00e5ff4d] active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none text-sm;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 text-gray-300 border border-cyber-border-light rounded-lg transition-all duration-200 hover:bg-white/5 hover:text-white hover:border-white/20 active:scale-[0.97] text-sm;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-danger/10 text-danger border border-danger/20 font-semibold rounded-lg transition-all duration-200 hover:bg-danger/20 active:scale-[0.97] text-sm;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2.5 bg-cyber-bg/50 border border-cyber-border-light rounded-lg text-gray-100 placeholder-gray-500 text-sm transition-all duration-200 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .badge-critical {
+    @apply bg-danger/15 text-danger border border-danger/20;
+  }
+
+  .badge-high {
+    @apply bg-orange-500/15 text-orange-400 border border-orange-500/20;
+  }
+
+  .badge-medium {
+    @apply bg-warning/15 text-warning border border-warning/20;
+  }
+
+  .badge-low {
+    @apply bg-success/15 text-success border border-success/20;
+  }
+
+  .badge-info {
+    @apply bg-accent/15 text-accent border border-accent/20;
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    animation: animateIn 0.3s ease-out forwards;
+  }
+
+  @keyframes animateIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
