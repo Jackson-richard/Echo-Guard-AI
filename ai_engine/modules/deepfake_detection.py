@@ -58,7 +58,6 @@ def process_deepfake(file_bytes: bytes):
     energy = librosa.feature.rms(y=np_wave)
     energy_mean = float(np.mean(energy))
     
-    # 5. Formants
     formants = extract_formants(np_wave, sample_rate)
     
     is_deepfake = False
