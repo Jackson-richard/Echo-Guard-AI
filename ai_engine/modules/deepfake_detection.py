@@ -44,7 +44,7 @@ def process_deepfake(file_bytes: bytes):
     mfcc = librosa.feature.mfcc(y=np_wave, sr=sample_rate, n_mfcc=13)
     mfcc_mean = [float(m) for m in np.mean(mfcc, axis=1)]
     
-    # 2. Spectrogram (Mel)
+    
     mel_spectrogram = librosa.feature.melspectrogram(y=np_wave, sr=sample_rate)
     mel_mean = float(np.mean(mel_spectrogram))
     
