@@ -64,7 +64,7 @@ def process_deepfake(file_bytes: bytes):
     confidence = 0.0
     details = []
     
-    # Run through the actual Deepfake model
+    
     if model != "heuristic_fallback":
         # transformers pipeline
         res = model(np_wave, padding=True)
