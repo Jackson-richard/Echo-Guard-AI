@@ -48,7 +48,7 @@ def process_deepfake(file_bytes: bytes):
     mel_spectrogram = librosa.feature.melspectrogram(y=np_wave, sr=sample_rate)
     mel_mean = float(np.mean(mel_spectrogram))
     
-    # 3. Pitch (F0)
+    
     pitches, magnitudes = librosa.piptrack(y=np_wave, sr=sample_rate)
     valid_pitches = pitches[pitches > 0]
     pitch_mean = float(np.mean(valid_pitches)) if len(valid_pitches) > 0 else 0.0
