@@ -13,7 +13,7 @@ def load_deepfake_model():
     global deepfake_pipeline
     if deepfake_pipeline is None:
         try:
-            # Load real HF model for deepfake detection 
+             
             deepfake_pipeline = pipeline("audio-classification", model="MelodyMachine/Deepfake-audio-detection-V2")
         except Exception:
             deepfake_pipeline = "heuristic_fallback"
