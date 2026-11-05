@@ -40,7 +40,7 @@ def process_deepfake(file_bytes: bytes):
     waveform, sample_rate = torchaudio.load(io.BytesIO(file_bytes))
     np_wave = waveform.numpy()[0]
     
-    # 1. MFCC
+    
     mfcc = librosa.feature.mfcc(y=np_wave, sr=sample_rate, n_mfcc=13)
     mfcc_mean = [float(m) for m in np.mean(mfcc, axis=1)]
     
